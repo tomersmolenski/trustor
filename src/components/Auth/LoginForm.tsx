@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Shield, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Shield, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 interface LoginFormProps {
   onToggleMode: () => void;
@@ -15,6 +15,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleMode }) => {
 
   const { signIn } = useAuth();
 
+  const getErrorMessage = (error: any) => {
+    if (error.message?.includes('Invalid login credentials')) {
+      return 'Invalid email or password. Please check your credentials and try again.';
+    }
+    if (error.message?.includes('Email not confirmed')) {
+      return 'Please check your email and click the confirmation link before signing in.';
+    }
+    if (error.message?.includes('Too many requests')) {
+      return 'Too many login attempts. Please wait a few minutes before trying again.';
+    }
+    return error.message || 'An error occurred during sign in. Please try again.';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -24,7 +37,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleMode }) => {
       const { error } = await signIn(email, password);
       if (error) throw error;
     } catch (error: any) {
-      setError(error.message);
+      setError(getErrorMessage(error));
     } finally {
       setLoading(false);
     }
@@ -43,8 +56,25 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleMode }) => {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-6">
-              <p className="text-red-800 text-sm">{error}</p>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <div className="flex items-start">
+                <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
+                <div>
+                  <p className="text-red-800 text-sm font-medium mb-1">Sign in failed</p>
+                  <p className="text-red-700 text-sm">{error}</p>
+                  {error.includes('Invalid email or password') && (
+                    <p className="text-red-600 text-xs mt-2">
+                      Don't have an account?{' '}
+                      <button
+                        onClick={onToggleMode}
+                        className="underline hover:no-underline font-medium"
+                      >
+                        Sign up here
+                      </button>
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 

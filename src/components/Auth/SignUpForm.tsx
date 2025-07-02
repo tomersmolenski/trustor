@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Shield, Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
+import { Shield, Mail, Lock, User, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface SignUpFormProps {
   onToggleMode: () => void;
@@ -17,6 +17,22 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onToggleMode }) => {
 
   const { signUp } = useAuth();
 
+  const getErrorMessage = (error: any) => {
+    if (error.message?.includes('User already registered')) {
+      return 'An account with this email already exists. Please sign in instead.';
+    }
+    if (error.message?.includes('Password should be at least')) {
+      return 'Password must be at least 6 characters long.';
+    }
+    if (error.message?.includes('Invalid email')) {
+      return 'Please enter a valid email address.';
+    }
+    if (error.message?.includes('signup is disabled')) {
+      return 'Account registration is currently disabled. Please contact support.';
+    }
+    return error.message || 'An error occurred during sign up. Please try again.';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -27,7 +43,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onToggleMode }) => {
       if (error) throw error;
       setSuccess(true);
     } catch (error: any) {
-      setError(error.message);
+      setError(getErrorMessage(error));
     } finally {
       setLoading(false);
     }
@@ -39,17 +55,17 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onToggleMode }) => {
         <div className="max-w-md w-full">
           <div className="bg-white rounded-2xl shadow-2xl p-8 text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Shield className="h-8 w-8 text-white" />
+              <CheckCircle className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-slate-900 mb-2">Check your email</h1>
+            <h1 className="text-2xl font-bold text-slate-900 mb-2">Account created successfully!</h1>
             <p className="text-slate-600 mb-6">
-              We've sent you a confirmation link at <strong>{email}</strong>
+              Welcome to ComplianceOS! You can now sign in with your credentials.
             </p>
             <button
               onClick={onToggleMode}
-              className="text-blue-600 hover:text-blue-800 font-medium"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium"
             >
-              Back to sign in
+              Continue to sign in
             </button>
           </div>
         </div>
@@ -70,8 +86,25 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onToggleMode }) => {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-6">
-              <p className="text-red-800 text-sm">{error}</p>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <div className="flex items-start">
+                <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
+                <div>
+                  <p className="text-red-800 text-sm font-medium mb-1">Sign up failed</p>
+                  <p className="text-red-700 text-sm">{error}</p>
+                  {error.includes('already exists') && (
+                    <p className="text-red-600 text-xs mt-2">
+                      Already have an account?{' '}
+                      <button
+                        onClick={onToggleMode}
+                        className="underline hover:no-underline font-medium"
+                      >
+                        Sign in here
+                      </button>
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
@@ -133,6 +166,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onToggleMode }) => {
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
               </div>
+              <p className="text-xs text-slate-500 mt-1">Password must be at least 6 characters long</p>
             </div>
 
             <button

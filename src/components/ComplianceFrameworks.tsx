@@ -112,32 +112,32 @@ const ComplianceFrameworks: React.FC = () => {
   const selectedFrameworkData = frameworks.find(f => f.id === selectedFramework);
 
   return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Compliance Hub</h1>
-        <p className="text-slate-600">Manage and track your compliance across multiple frameworks with automated monitoring</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Compliance Hub</h1>
+        <p className="text-slate-600 dark:text-slate-400">Manage and track your compliance across multiple frameworks with automated monitoring</p>
       </div>
 
       {!selectedFramework ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {frameworks.map((framework) => (
-            <div key={framework.id} className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div key={framework.id} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-4">
                   <div className={`bg-gradient-to-br ${framework.gradient} p-4 rounded-xl`}>
                     <Shield className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900">{framework.name}</h3>
-                    <p className="text-slate-600 text-sm">{framework.description}</p>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{framework.name}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">{framework.description}</p>
                   </div>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                   framework.status === 'Compliant' || framework.status === 'Audit Ready'
-                    ? 'bg-emerald-100 text-emerald-800'
+                    ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300'
                     : framework.status === 'In Progress'
-                    ? 'bg-blue-100 text-blue-800'
-                    : 'bg-orange-100 text-orange-800'
+                    ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
+                    : 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300'
                 }`}>
                   {framework.status}
                 </span>
@@ -145,10 +145,10 @@ const ComplianceFrameworks: React.FC = () => {
 
               <div className="mb-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-slate-700">Overall Progress</span>
-                  <span className="text-lg font-bold text-slate-900">{framework.progress}%</span>
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Overall Progress</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-white">{framework.progress}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
+                <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3">
                   <div 
                     className={`${framework.color} h-3 rounded-full transition-all duration-500`}
                     style={{ width: `${framework.progress}%` }}
@@ -157,48 +157,48 @@ const ComplianceFrameworks: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
+                <div className="text-center p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                   <div className="flex items-center justify-center mb-2">
                     <CheckCircle className="h-5 w-5 text-emerald-500" />
                   </div>
-                  <p className="text-lg font-bold text-slate-900">{framework.implementedControls}</p>
-                  <p className="text-xs text-slate-500">Implemented</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{framework.implementedControls}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Implemented</p>
                 </div>
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
+                <div className="text-center p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                   <div className="flex items-center justify-center mb-2">
                     <Zap className="h-5 w-5 text-blue-500" />
                   </div>
-                  <p className="text-lg font-bold text-slate-900">{framework.automatedControls}</p>
-                  <p className="text-xs text-slate-500">Automated</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{framework.automatedControls}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Automated</p>
                 </div>
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
+                <div className="text-center p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                   <div className="flex items-center justify-center mb-2">
                     <Target className="h-5 w-5 text-purple-500" />
                   </div>
-                  <p className="text-lg font-bold text-slate-900">{framework.totalControls}</p>
-                  <p className="text-xs text-slate-500">Total Controls</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{framework.totalControls}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Total Controls</p>
                 </div>
               </div>
 
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
-                    <Calendar className="h-4 w-4 text-slate-500" />
-                    <span className="text-sm text-slate-600">Next audit: {framework.nextAudit}</span>
+                    <Calendar className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Next audit: {framework.nextAudit}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <AlertTriangle className={`h-4 w-4 ${
                       framework.riskScore === 'Low' ? 'text-emerald-500' :
                       framework.riskScore === 'Medium' ? 'text-yellow-500' : 'text-red-500'
                     }`} />
-                    <span className="text-sm text-slate-600">Risk: {framework.riskScore}</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Risk: {framework.riskScore}</span>
                   </div>
                 </div>
               </div>
 
               <button
                 onClick={() => setSelectedFramework(framework.id)}
-                className="w-full bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 py-3 px-4 rounded-lg hover:from-slate-200 hover:to-slate-300 transition-all duration-200 flex items-center justify-center space-x-2 group"
+                className="w-full bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 text-slate-700 dark:text-slate-300 py-3 px-4 rounded-lg hover:from-slate-200 hover:to-slate-300 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-200 flex items-center justify-center space-x-2 group"
               >
                 <span>View Details & Controls</span>
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -210,7 +210,7 @@ const ComplianceFrameworks: React.FC = () => {
         <div>
           <button
             onClick={() => setSelectedFramework(null)}
-            className="mb-6 text-blue-600 hover:text-blue-800 flex items-center space-x-2 group"
+            className="mb-6 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center space-x-2 group"
           >
             <ChevronRight className="h-4 w-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Frameworks</span>
@@ -219,83 +219,83 @@ const ComplianceFrameworks: React.FC = () => {
           {selectedFrameworkData && (
             <div>
               {/* Framework Header */}
-              <div className="bg-white rounded-xl p-8 border border-slate-200 mb-6">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700 mb-6">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-6">
                     <div className={`bg-gradient-to-br ${selectedFrameworkData.gradient} p-6 rounded-xl`}>
                       <Shield className="h-10 w-10 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold text-slate-900">{selectedFrameworkData.name}</h2>
-                      <p className="text-slate-600 text-lg">{selectedFrameworkData.description}</p>
+                      <h2 className="text-3xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.name}</h2>
+                      <p className="text-slate-600 dark:text-slate-400 text-lg">{selectedFrameworkData.description}</p>
                       <div className="flex items-center space-x-4 mt-2">
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                           selectedFrameworkData.status === 'Compliant' || selectedFrameworkData.status === 'Audit Ready'
-                            ? 'bg-emerald-100 text-emerald-800'
+                            ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300'
                             : selectedFrameworkData.status === 'In Progress'
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-orange-100 text-orange-800'
+                            ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
+                            : 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300'
                         }`}>
                           {selectedFrameworkData.status}
                         </span>
-                        <span className="text-sm text-slate-500">Next audit: {selectedFrameworkData.nextAudit}</span>
+                        <span className="text-sm text-slate-500 dark:text-slate-400">Next audit: {selectedFrameworkData.nextAudit}</span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-slate-900">{selectedFrameworkData.progress}%</p>
-                    <p className="text-slate-500">Complete</p>
+                    <p className="text-4xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.progress}%</p>
+                    <p className="text-slate-500 dark:text-slate-400">Complete</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                  <div className="text-center p-4 bg-emerald-50 rounded-xl border border-emerald-200">
-                    <CheckCircle className="h-8 w-8 text-emerald-600 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-slate-900">{selectedFrameworkData.implementedControls}</p>
-                    <p className="text-slate-600">Implemented Controls</p>
+                  <div className="text-center p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
+                    <CheckCircle className="h-8 w-8 text-emerald-600 dark:text-emerald-400 mx-auto mb-2" />
+                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.implementedControls}</p>
+                    <p className="text-slate-600 dark:text-slate-400">Implemented Controls</p>
                   </div>
-                  <div className="text-center p-4 bg-blue-50 rounded-xl border border-blue-200">
-                    <Zap className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-slate-900">{selectedFrameworkData.automatedControls}</p>
-                    <p className="text-slate-600">Automated Controls</p>
+                  <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                    <Zap className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.automatedControls}</p>
+                    <p className="text-slate-600 dark:text-slate-400">Automated Controls</p>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-xl border border-purple-200">
-                    <Clock className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-slate-900">{selectedFrameworkData.totalControls - selectedFrameworkData.implementedControls}</p>
-                    <p className="text-slate-600">Remaining Controls</p>
+                  <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-200 dark:border-purple-800">
+                    <Clock className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
+                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.totalControls - selectedFrameworkData.implementedControls}</p>
+                    <p className="text-slate-600 dark:text-slate-400">Remaining Controls</p>
                   </div>
-                  <div className="text-center p-4 bg-orange-50 rounded-xl border border-orange-200">
+                  <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800">
                     <AlertTriangle className={`h-8 w-8 mx-auto mb-2 ${
-                      selectedFrameworkData.riskScore === 'Low' ? 'text-emerald-600' :
-                      selectedFrameworkData.riskScore === 'Medium' ? 'text-yellow-600' : 'text-red-600'
+                      selectedFrameworkData.riskScore === 'Low' ? 'text-emerald-600 dark:text-emerald-400' :
+                      selectedFrameworkData.riskScore === 'Medium' ? 'text-yellow-600 dark:text-yellow-400' : 'text-red-600 dark:text-red-400'
                     }`} />
-                    <p className="text-2xl font-bold text-slate-900">{selectedFrameworkData.riskScore}</p>
-                    <p className="text-slate-600">Risk Score</p>
+                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{selectedFrameworkData.riskScore}</p>
+                    <p className="text-slate-600 dark:text-slate-400">Risk Score</p>
                   </div>
                 </div>
               </div>
 
               {/* Control Domains */}
-              <div className="bg-white rounded-xl p-6 border border-slate-200">
-                <h3 className="text-xl font-semibold text-slate-900 mb-6">Control Domains</h3>
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Control Domains</h3>
                 <div className="space-y-4">
                   {selectedFrameworkData.domains.map((domain, index) => (
-                    <div key={index} className="border border-slate-200 rounded-xl p-6 hover:bg-slate-50 transition-colors">
+                    <div key={index} className="border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
                       <div className="flex items-center justify-between mb-4">
-                        <h4 className="font-semibold text-slate-900 text-lg">{domain.name}</h4>
+                        <h4 className="font-semibold text-slate-900 dark:text-white text-lg">{domain.name}</h4>
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-2">
                             <Activity className="h-4 w-4 text-blue-500" />
-                            <span className="text-sm text-slate-600">{domain.automated} automated</span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">{domain.automated} automated</span>
                           </div>
                           <div className="flex items-center space-x-2">
                             <Database className="h-4 w-4 text-purple-500" />
-                            <span className="text-sm text-slate-600">{domain.controls} controls</span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">{domain.controls} controls</span>
                           </div>
-                          <span className="text-lg font-bold text-slate-900">{domain.progress}%</span>
+                          <span className="text-lg font-bold text-slate-900 dark:text-white">{domain.progress}%</span>
                         </div>
                       </div>
-                      <div className="w-full bg-slate-200 rounded-full h-3 mb-4">
+                      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3 mb-4">
                         <div 
                           className={`${selectedFrameworkData.color} h-3 rounded-full transition-all duration-500`}
                           style={{ width: `${domain.progress}%` }}
@@ -305,11 +305,11 @@ const ComplianceFrameworks: React.FC = () => {
                         <div className="flex items-center space-x-4">
                           {domain.progress === 100 && <CheckCircle className="h-5 w-5 text-emerald-500" />}
                           {domain.progress < 80 && <AlertTriangle className="h-5 w-5 text-yellow-500" />}
-                          <span className="text-sm text-slate-500">
+                          <span className="text-sm text-slate-500 dark:text-slate-400">
                             {Math.round(domain.controls * domain.progress / 100)} of {domain.controls} implemented
                           </span>
                         </div>
-                        <button className="text-blue-600 hover:text-blue-800 text-sm flex items-center space-x-1 group">
+                        <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm flex items-center space-x-1 group">
                           <span>View Controls</span>
                           <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                         </button>

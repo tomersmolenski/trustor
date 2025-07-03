@@ -92,30 +92,30 @@ const DocumentGenerator: React.FC = () => {
   });
 
   return (
-    <div className="p-8">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Document Generator</h1>
-        <p className="text-slate-600">Generate and manage compliance documents from templates</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Document Generator</h1>
+        <p className="text-slate-600 dark:text-slate-400">Generate and manage compliance documents from templates</p>
       </div>
 
       {/* Controls */}
-      <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200 mb-6">
+      <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
-            <Search className="h-5 w-5 text-slate-400 absolute left-3 top-3" />
+            <Search className="h-5 w-5 text-slate-400 dark:text-slate-500 absolute left-3 top-3" />
             <input
               type="text"
               placeholder="Search templates..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             />
           </div>
           
           <select
             value={selectedFramework}
             onChange={(e) => setSelectedFramework(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
           >
             {frameworks.map(framework => (
               <option key={framework} value={framework.toLowerCase()}>{framework}</option>
@@ -125,7 +125,7 @@ const DocumentGenerator: React.FC = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
           >
             {categories.map(category => (
               <option key={category} value={category.toLowerCase()}>{category}</option>
@@ -142,31 +142,31 @@ const DocumentGenerator: React.FC = () => {
       {/* Templates Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredTemplates.map((template) => (
-          <div key={template.id} className="bg-white rounded-lg p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+          <div key={template.id} className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <FileText className="h-6 w-6 text-blue-600" />
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                  <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900">{template.name}</h3>
-                  <p className="text-sm text-slate-600">{template.framework}</p>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">{template.name}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{template.framework}</p>
                 </div>
               </div>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                 template.status === 'Generated' 
-                  ? 'bg-green-100 text-green-800'
+                  ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300'
                   : template.status === 'Draft'
-                  ? 'bg-yellow-100 text-yellow-800'
-                  : 'bg-blue-100 text-blue-800'
+                  ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300'
+                  : 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
               }`}>
                 {template.status}
               </span>
             </div>
 
-            <p className="text-slate-600 text-sm mb-4">{template.description}</p>
+            <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{template.description}</p>
 
-            <div className="flex items-center justify-between text-sm text-slate-500 mb-4">
+            <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 mb-4">
               <div className="flex items-center space-x-1">
                 <Clock className="h-4 w-4" />
                 <span>{template.lastUpdated}</span>
@@ -182,7 +182,7 @@ const DocumentGenerator: React.FC = () => {
                 <Eye className="h-4 w-4" />
                 <span>Preview</span>
               </button>
-              <button className="flex-1 bg-slate-100 text-slate-700 py-2 px-3 rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center space-x-2 text-sm">
+              <button className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 py-2 px-3 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors flex items-center justify-center space-x-2 text-sm">
                 <Edit className="h-4 w-4" />
                 <span>Customize</span>
               </button>
@@ -193,15 +193,15 @@ const DocumentGenerator: React.FC = () => {
 
       {filteredTemplates.length === 0 && (
         <div className="text-center py-12">
-          <FileText className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-slate-900 mb-2">No templates found</h3>
-          <p className="text-slate-600">Try adjusting your search criteria or create a new template.</p>
+          <FileText className="h-12 w-12 text-slate-400 dark:text-slate-500 mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No templates found</h3>
+          <p className="text-slate-600 dark:text-slate-400">Try adjusting your search criteria or create a new template.</p>
         </div>
       )}
 
       {/* Quick Actions */}
       <div className="mt-8">
-        <h2 className="text-xl font-semibold text-slate-900 mb-4">Quick Actions</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all text-left">
             <FileText className="h-6 w-6 mb-2" />

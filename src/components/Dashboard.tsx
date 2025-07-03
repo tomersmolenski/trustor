@@ -24,9 +24,9 @@ const Dashboard: React.FC = () => {
       change: '+5%',
       trend: 'up',
       icon: Shield,
-      color: 'text-emerald-600',
-      bgColor: 'bg-emerald-50',
-      borderColor: 'border-emerald-200'
+      color: 'text-emerald-600 dark:text-emerald-400',
+      bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
+      borderColor: 'border-emerald-200 dark:border-emerald-800'
     },
     {
       title: 'Active Controls',
@@ -34,9 +34,9 @@ const Dashboard: React.FC = () => {
       change: '+23',
       trend: 'up',
       icon: CheckCircle,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200'
+      color: 'text-blue-600 dark:text-blue-400',
+      bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+      borderColor: 'border-blue-200 dark:border-blue-800'
     },
     {
       title: 'Evidence Collected',
@@ -44,9 +44,9 @@ const Dashboard: React.FC = () => {
       change: '+156',
       trend: 'up',
       icon: FileText,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200'
+      color: 'text-purple-600 dark:text-purple-400',
+      bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+      borderColor: 'border-purple-200 dark:border-purple-800'
     },
     {
       title: 'Risk Score',
@@ -54,9 +54,9 @@ const Dashboard: React.FC = () => {
       change: '-0.4',
       trend: 'down',
       icon: AlertTriangle,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200'
+      color: 'text-orange-600 dark:text-orange-400',
+      bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+      borderColor: 'border-orange-200 dark:border-orange-800'
     }
   ];
 
@@ -131,16 +131,16 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Compliance Dashboard</h1>
-            <p className="text-slate-600">Real-time monitoring of your security and compliance posture</p>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Compliance Dashboard</h1>
+            <p className="text-slate-600 dark:text-slate-400">Real-time monitoring of your security and compliance posture</p>
           </div>
           <div className="flex items-center space-x-3">
-            <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center space-x-2">
+            <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center space-x-2">
               <Eye className="h-4 w-4" />
               <span>View All</span>
             </button>
@@ -158,18 +158,18 @@ const Dashboard: React.FC = () => {
           const Icon = stat.icon;
           const TrendIcon = stat.trend === 'up' ? ArrowUpRight : ArrowDownRight;
           return (
-            <div key={index} className={`bg-white rounded-xl p-6 border ${stat.borderColor} hover:shadow-lg transition-all duration-200`}>
+            <div key={index} className={`bg-white dark:bg-slate-800 rounded-xl p-6 border ${stat.borderColor} hover:shadow-lg transition-all duration-200`}>
               <div className="flex items-center justify-between mb-4">
                 <div className={`${stat.bgColor} p-3 rounded-xl`}>
                   <Icon className={`h-6 w-6 ${stat.color}`} />
                 </div>
-                <div className={`flex items-center space-x-1 ${stat.trend === 'up' ? 'text-emerald-600' : 'text-red-600'}`}>
+                <div className={`flex items-center space-x-1 ${stat.trend === 'up' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
                   <TrendIcon className="h-4 w-4" />
                   <span className="text-sm font-medium">{stat.change}</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-1">{stat.value}</h3>
-              <p className="text-slate-600 text-sm">{stat.title}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{stat.value}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">{stat.title}</p>
             </div>
           );
         })}
@@ -177,39 +177,39 @@ const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         {/* Compliance Frameworks */}
-        <div className="lg:col-span-2 bg-white rounded-xl p-6 border border-slate-200">
+        <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-slate-900">Compliance Frameworks</h2>
-            <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">View All</button>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Compliance Frameworks</h2>
+            <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium">View All</button>
           </div>
           <div className="space-y-4">
             {complianceFrameworks.map((framework, index) => (
-              <div key={index} className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition-colors">
+              <div key={index} className="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-3">
                     <div className={`w-3 h-3 rounded-full ${framework.color}`}></div>
-                    <span className="font-medium text-slate-900">{framework.name}</span>
+                    <span className="font-medium text-slate-900 dark:text-white">{framework.name}</span>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       framework.status === 'Compliant' || framework.status === 'Audit Ready'
-                        ? 'bg-emerald-100 text-emerald-800'
+                        ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300'
                         : framework.status === 'In Progress'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-orange-100 text-orange-800'
+                        ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
+                        : 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300'
                     }`}>
                       {framework.status}
                     </span>
                   </div>
-                  <span className="text-lg font-bold text-slate-900">{framework.progress}%</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-white">{framework.progress}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2 mb-3">
+                <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 mb-3">
                   <div 
                     className={`${framework.color} h-2 rounded-full transition-all duration-500`}
                     style={{ width: `${framework.progress}%` }}
                   ></div>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-600">Next: {framework.nextMilestone}</span>
-                  <span className="text-slate-500">{framework.daysLeft} days left</span>
+                  <span className="text-slate-600 dark:text-slate-400">Next: {framework.nextMilestone}</span>
+                  <span className="text-slate-500 dark:text-slate-500">{framework.daysLeft} days left</span>
                 </div>
               </div>
             ))}
@@ -217,28 +217,28 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Automated Monitoring */}
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-slate-900">Live Monitoring</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Live Monitoring</h2>
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-emerald-600 font-medium">Live</span>
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Live</span>
             </div>
           </div>
           <div className="space-y-3">
             {automatedChecks.map((check, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                 <div className="flex items-center space-x-3">
                   <div className={`w-2 h-2 rounded-full ${
                     check.status === 'passing' ? 'bg-emerald-500' : 'bg-red-500'
                   }`}></div>
-                  <span className="text-sm font-medium text-slate-900">{check.name}</span>
+                  <span className="text-sm font-medium text-slate-900 dark:text-white">{check.name}</span>
                 </div>
-                <span className="text-xs text-slate-500">{check.lastCheck}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">{check.lastCheck}</span>
               </div>
             ))}
           </div>
-          <button className="w-full mt-4 bg-slate-100 text-slate-700 py-2 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium">
+          <button className="w-full mt-4 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-sm font-medium">
             View All Checks
           </button>
         </div>
@@ -246,26 +246,26 @@ const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Recent Activity */}
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Recent Activity</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Recent Activity</h2>
           <div className="space-y-4">
             {recentActivity.map((activity, index) => (
-              <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
+              <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                 <div className="flex-shrink-0 mt-1">
                   {activity.type === 'automated' ? (
-                    <Zap className="h-4 w-4 text-blue-500" />
+                    <Zap className="h-4 w-4 text-blue-500 dark:text-blue-400" />
                   ) : (
-                    <Users className="h-4 w-4 text-purple-500" />
+                    <Users className="h-4 w-4 text-purple-500 dark:text-purple-400" />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900">{activity.action}</p>
+                  <p className="text-sm font-medium text-slate-900 dark:text-white">{activity.action}</p>
                   <div className="flex items-center space-x-2 mt-1">
-                    <p className="text-xs text-slate-500">{activity.time}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{activity.time}</p>
                     <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                       activity.status === 'success' 
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : 'bg-yellow-100 text-yellow-700'
+                        ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300'
+                        : 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300'
                     }`}>
                       {activity.status}
                     </span>
@@ -277,8 +277,8 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Quick Actions</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Quick Actions</h2>
           <div className="grid grid-cols-1 gap-3">
             <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all text-left group">
               <div className="flex items-center justify-between">

@@ -149,19 +149,19 @@ const AutomatedMonitoring: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'passing': return 'bg-emerald-100 text-emerald-800 border-emerald-200';
-      case 'failing': return 'bg-red-100 text-red-800 border-red-200';
-      case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-slate-100 text-slate-800 border-slate-200';
+      case 'passing': return 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800';
+      case 'failing': return 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border-red-200 dark:border-red-800';
+      case 'warning': return 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800';
+      default: return 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-600';
     }
   };
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-100 text-red-800';
-      case 'high': return 'bg-orange-100 text-orange-800';
-      case 'medium': return 'bg-yellow-100 text-yellow-800';
-      default: return 'bg-blue-100 text-blue-800';
+      case 'critical': return 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300';
+      case 'high': return 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300';
+      case 'medium': return 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300';
+      default: return 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300';
     }
   };
 
@@ -178,15 +178,15 @@ const AutomatedMonitoring: React.FC = () => {
   };
 
   return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Automated Monitoring</h1>
-            <p className="text-slate-600">Real-time compliance monitoring and automated evidence collection</p>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Automated Monitoring</h1>
+            <p className="text-slate-600 dark:text-slate-400">Real-time compliance monitoring and automated evidence collection</p>
           </div>
           <div className="flex items-center space-x-3">
-            <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center space-x-2">
+            <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center space-x-2">
               <Settings className="h-4 w-4" />
               <span>Configure</span>
             </button>
@@ -200,66 +200,66 @@ const AutomatedMonitoring: React.FC = () => {
 
       {/* Status Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-emerald-50 p-3 rounded-xl">
-              <CheckCircle className="h-6 w-6 text-emerald-600" />
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-xl">
+              <CheckCircle className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
             </div>
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-emerald-600 font-medium">Live</span>
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Live</span>
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{statusCounts.passing}</h3>
-          <p className="text-slate-600 text-sm">Passing Checks</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{statusCounts.passing}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Passing Checks</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-red-50 p-3 rounded-xl">
-              <XCircle className="h-6 w-6 text-red-600" />
+            <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-xl">
+              <XCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
             </div>
-            <RefreshCw className="h-4 w-4 text-slate-400" />
+            <RefreshCw className="h-4 w-4 text-slate-400 dark:text-slate-500" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{statusCounts.failing}</h3>
-          <p className="text-slate-600 text-sm">Failing Checks</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{statusCounts.failing}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Failing Checks</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-yellow-50 p-3 rounded-xl">
-              <AlertTriangle className="h-6 w-6 text-yellow-600" />
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-xl">
+              <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
             </div>
-            <Clock className="h-4 w-4 text-slate-400" />
+            <Clock className="h-4 w-4 text-slate-400 dark:text-slate-500" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{statusCounts.warning}</h3>
-          <p className="text-slate-600 text-sm">Warnings</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{statusCounts.warning}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Warnings</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-blue-50 p-3 rounded-xl">
-              <Zap className="h-6 w-6 text-blue-600" />
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-xl">
+              <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <Activity className="h-4 w-4 text-slate-400" />
+            <Activity className="h-4 w-4 text-slate-400 dark:text-slate-500" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">47</h3>
-          <p className="text-slate-600 text-sm">Total Automated</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">47</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Total Automated</p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-6 border border-slate-200 mb-6">
+      <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <Filter className="h-4 w-4 text-slate-500" />
-              <span className="text-sm font-medium text-slate-700">Filter by:</span>
+              <Filter className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Filter by:</span>
             </div>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             >
               {monitoringCategories.map(category => (
                 <option key={category.id} value={category.id}>
@@ -270,7 +270,7 @@ const AutomatedMonitoring: React.FC = () => {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             >
               <option value="all">All Status</option>
               <option value="passing">Passing</option>
@@ -279,7 +279,7 @@ const AutomatedMonitoring: React.FC = () => {
             </select>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="bg-slate-100 text-slate-700 px-3 py-2 rounded-lg hover:bg-slate-200 transition-colors text-sm">
+            <button className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-sm">
               Export Report
             </button>
           </div>
@@ -289,7 +289,7 @@ const AutomatedMonitoring: React.FC = () => {
       {/* Monitoring Checks */}
       <div className="space-y-4">
         {filteredChecks.map((check) => (
-          <div key={check.id} className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-200">
+          <div key={check.id} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all duration-200">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 mt-1">
@@ -297,7 +297,7 @@ const AutomatedMonitoring: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-lg font-semibold text-slate-900">{check.name}</h3>
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{check.name}</h3>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(check.status)}`}>
                       {check.status}
                     </span>
@@ -305,8 +305,8 @@ const AutomatedMonitoring: React.FC = () => {
                       {check.severity}
                     </span>
                   </div>
-                  <p className="text-slate-600 mb-3">{check.description}</p>
-                  <div className="flex items-center space-x-6 text-sm text-slate-500">
+                  <p className="text-slate-600 dark:text-slate-400 mb-3">{check.description}</p>
+                  <div className="flex items-center space-x-6 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center space-x-1">
                       <Clock className="h-4 w-4" />
                       <span>Last check: {check.lastCheck}</span>
@@ -323,35 +323,35 @@ const AutomatedMonitoring: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <button className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
+                <button className="p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                   <Eye className="h-4 w-4" />
                 </button>
-                <button className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
+                <button className="p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                   <Settings className="h-4 w-4" />
                 </button>
-                <button className="p-2 text-blue-600 hover:text-blue-800 transition-colors">
+                <button className="p-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
                   <Play className="h-4 w-4" />
                 </button>
               </div>
             </div>
             
-            <div className="border-t border-slate-200 pt-4">
+            <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-sm text-slate-600">Automated Evidence Collection</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Automated Evidence Collection</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Database className="h-4 w-4 text-purple-500" />
-                    <span className="text-sm text-slate-600">{check.evidence}</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">{check.evidence}</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                  <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium">
                     View Evidence
                   </button>
-                  <button className="text-slate-600 hover:text-slate-800 text-sm">
+                  <button className="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-300 text-sm">
                     Configure
                   </button>
                 </div>

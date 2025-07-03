@@ -44,20 +44,20 @@ const Reports: React.FC = () => {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Reports & Analytics</h1>
-        <p className="text-slate-600">Comprehensive insights into your compliance posture</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Reports & Analytics</h1>
+        <p className="text-slate-600 dark:text-slate-400">Comprehensive insights into your compliance posture</p>
       </div>
 
       {/* Controls */}
-      <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200 mb-6">
+      <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700 mb-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             >
               <option value="7days">Last 7 days</option>
               <option value="30days">Last 30 days</option>
@@ -68,7 +68,7 @@ const Reports: React.FC = () => {
             <select
               value={selectedFramework}
               onChange={(e) => setSelectedFramework(e.target.value)}
-              className="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             >
               <option value="all">All Frameworks</option>
               <option value="iso27001">ISO 27001</option>
@@ -83,7 +83,7 @@ const Reports: React.FC = () => {
               <Download className="h-4 w-4" />
               <span>Export Report</span>
             </button>
-            <button className="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-200 transition-colors flex items-center space-x-2">
+            <button className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors flex items-center space-x-2">
               <Filter className="h-4 w-4" />
               <span>Filters</span>
             </button>
@@ -93,17 +93,17 @@ const Reports: React.FC = () => {
 
       {/* Compliance Scores */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Compliance Scores</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Compliance Scores</h2>
           <div className="space-y-4">
             {complianceMetrics.map((metric, index) => (
-              <div key={index} className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
                 <div>
-                  <h3 className="font-medium text-slate-900">{metric.framework}</h3>
+                  <h3 className="font-medium text-slate-900 dark:text-white">{metric.framework}</h3>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className="text-2xl font-bold text-slate-900">{metric.score}%</span>
+                    <span className="text-2xl font-bold text-slate-900 dark:text-white">{metric.score}%</span>
                     <span className={`text-sm font-medium flex items-center space-x-1 ${
-                      metric.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                      metric.trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
                     }`}>
                       <TrendingUp className={`h-4 w-4 ${metric.trend === 'down' ? 'rotate-180' : ''}`} />
                       <span>{metric.change}</span>
@@ -134,26 +134,26 @@ const Reports: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Risk Distribution</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Risk Distribution</h2>
           <div className="space-y-4">
             {riskMetrics.map((risk, index) => (
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className={`w-4 h-4 rounded-full ${risk.color}`}></div>
-                  <span className="font-medium text-slate-900">{risk.level} Risk</span>
+                  <span className="font-medium text-slate-900 dark:text-white">{risk.level} Risk</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl font-bold text-slate-900">{risk.count}</span>
-                  <span className="text-sm text-slate-500">items</span>
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white">{risk.count}</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-400">items</span>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-200">
+          <div className="mt-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
             <div className="flex items-center space-x-2">
-              <AlertTriangle className="h-5 w-5 text-red-600" />
-              <span className="font-medium text-red-800">3 Critical risks require immediate attention</span>
+              <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
+              <span className="font-medium text-red-800 dark:text-red-300">3 Critical risks require immediate attention</span>
             </div>
           </div>
         </div>
@@ -161,39 +161,39 @@ const Reports: React.FC = () => {
 
       {/* Document Statistics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Document Statistics</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Document Statistics</h2>
           <div className="grid grid-cols-2 gap-4">
             {documentStats.map((stat, index) => (
-              <div key={index} className="text-center p-4 bg-slate-50 rounded-lg">
-                <p className="text-2xl font-bold text-slate-900">{stat.count}</p>
-                <p className="text-slate-600 text-sm">{stat.type}</p>
-                <p className="text-xs text-green-600 mt-1">+{stat.updated} this month</p>
+              <div key={index} className="text-center p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">{stat.count}</p>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">{stat.type}</p>
+                <p className="text-xs text-green-600 dark:text-green-400 mt-1">+{stat.updated} this month</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">Recent Audit History</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Recent Audit History</h2>
           <div className="space-y-3">
             {auditHistory.map((audit, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                 <div>
-                  <h3 className="font-medium text-slate-900">{audit.framework}</h3>
-                  <p className="text-sm text-slate-600">{audit.date}</p>
+                  <h3 className="font-medium text-slate-900 dark:text-white">{audit.framework}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{audit.date}</p>
                 </div>
                 <div className="text-right">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     audit.result === 'Passed' 
-                      ? 'bg-green-100 text-green-800'
+                      ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300'
                       : audit.result === 'Minor Issues'
-                      ? 'bg-yellow-100 text-yellow-800'
-                      : 'bg-blue-100 text-blue-800'
+                      ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300'
+                      : 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
                   }`}>
                     {audit.result}
                   </span>
-                  <p className="text-sm text-slate-600 mt-1">{audit.score}%</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{audit.score}%</p>
                 </div>
               </div>
             ))}
@@ -203,7 +203,7 @@ const Reports: React.FC = () => {
 
       {/* Quick Report Actions */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-900 mb-4">Generate Reports</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Generate Reports</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all text-left">
             <BarChart3 className="h-6 w-6 mb-2" />

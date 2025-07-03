@@ -112,26 +112,26 @@ const Billing: React.FC = () => {
   };
 
   return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Billing & Subscription</h1>
-        <p className="text-slate-600">Manage your subscription and billing information</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Billing & Subscription</h1>
+        <p className="text-slate-600 dark:text-slate-400">Manage your subscription and billing information</p>
       </div>
 
       {/* Current Plan */}
-      <div className="bg-white rounded-xl p-6 border border-slate-200 mb-8">
+      <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">Current Plan</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Current Plan</h2>
             <div className="flex items-center space-x-4">
-              <span className="text-2xl font-bold text-blue-600">
+              <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {currentPlanData?.name}
               </span>
-              <span className="text-slate-600">
+              <span className="text-slate-600 dark:text-slate-400">
                 ${currentPlanData?.price}/month
               </span>
               {currentPlanData?.popular && (
-                <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                <span className="bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full text-xs font-medium">
                   Most Popular
                 </span>
               )}
@@ -146,14 +146,14 @@ const Billing: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-slate-50 rounded-lg p-4">
+          <div className="bg-slate-50 dark:bg-slate-700 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-700">Team Members</span>
-              <span className="text-xs text-slate-500">
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Team Members</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">
                 {usageStats.users}/{usageStats.maxUsers === 999 ? '∞' : usageStats.maxUsers}
               </span>
             </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
+            <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-2">
               <div 
                 className="bg-blue-600 h-2 rounded-full" 
                 style={{ width: `${Math.min((usageStats.users / usageStats.maxUsers) * 100, 100)}%` }}
@@ -161,14 +161,14 @@ const Billing: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-lg p-4">
+          <div className="bg-slate-50 dark:bg-slate-700 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-700">Frameworks</span>
-              <span className="text-xs text-slate-500">
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Frameworks</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">
                 {usageStats.frameworks}/{usageStats.maxFrameworks === 999 ? '∞' : usageStats.maxFrameworks}
               </span>
             </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
+            <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-2">
               <div 
                 className="bg-green-600 h-2 rounded-full" 
                 style={{ width: `${Math.min((usageStats.frameworks / usageStats.maxFrameworks) * 100, 100)}%` }}
@@ -176,12 +176,12 @@ const Billing: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-lg p-4">
+          <div className="bg-slate-50 dark:bg-slate-700 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-700">Storage</span>
-              <span className="text-xs text-slate-500">{usageStats.storage}/{usageStats.maxStorage}</span>
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Storage</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">{usageStats.storage}/{usageStats.maxStorage}</span>
             </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
+            <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-2">
               <div className="bg-purple-600 h-2 rounded-full" style={{ width: '23%' }}></div>
             </div>
           </div>
@@ -189,11 +189,11 @@ const Billing: React.FC = () => {
       </div>
 
       {/* Billing History */}
-      <div className="bg-white rounded-xl border border-slate-200 mb-8">
-        <div className="p-6 border-b border-slate-200">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 mb-8">
+        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-slate-900">Billing History</h2>
-            <button className="text-blue-600 hover:text-blue-800 text-sm flex items-center space-x-1">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Billing History</h2>
+            <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm flex items-center space-x-1">
               <Download className="h-4 w-4" />
               <span>Download All</span>
             </button>
@@ -202,42 +202,42 @@ const Billing: React.FC = () => {
         
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-50">
+            <thead className="bg-slate-50 dark:bg-slate-700">
               <tr>
-                <th className="text-left py-3 px-6 font-medium text-slate-900">Date</th>
-                <th className="text-left py-3 px-6 font-medium text-slate-900">Plan</th>
-                <th className="text-left py-3 px-6 font-medium text-slate-900">Amount</th>
-                <th className="text-left py-3 px-6 font-medium text-slate-900">Status</th>
-                <th className="text-left py-3 px-6 font-medium text-slate-900">Invoice</th>
+                <th className="text-left py-3 px-6 font-medium text-slate-900 dark:text-white">Date</th>
+                <th className="text-left py-3 px-6 font-medium text-slate-900 dark:text-white">Plan</th>
+                <th className="text-left py-3 px-6 font-medium text-slate-900 dark:text-white">Amount</th>
+                <th className="text-left py-3 px-6 font-medium text-slate-900 dark:text-white">Status</th>
+                <th className="text-left py-3 px-6 font-medium text-slate-900 dark:text-white">Invoice</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
               {billingHistory.map((bill) => (
-                <tr key={bill.id} className="hover:bg-slate-50">
+                <tr key={bill.id} className="hover:bg-slate-50 dark:hover:bg-slate-700">
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4 text-slate-400" />
-                      <span className="text-sm text-slate-900">
+                      <Calendar className="h-4 w-4 text-slate-400 dark:text-slate-500" />
+                      <span className="text-sm text-slate-900 dark:text-white">
                         {new Date(bill.date).toLocaleDateString()}
                       </span>
                     </div>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="text-sm text-slate-900">{bill.plan}</span>
+                    <span className="text-sm text-slate-900 dark:text-white">{bill.plan}</span>
                   </td>
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-1">
-                      <DollarSign className="h-4 w-4 text-slate-400" />
-                      <span className="text-sm font-medium text-slate-900">${bill.amount}</span>
+                      <DollarSign className="h-4 w-4 text-slate-400 dark:text-slate-500" />
+                      <span className="text-sm font-medium text-slate-900 dark:text-white">${bill.amount}</span>
                     </div>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 px-2 py-1 rounded-full text-xs font-medium">
                       {bill.status}
                     </span>
                   </td>
                   <td className="py-4 px-6">
-                    <button className="text-blue-600 hover:text-blue-800 text-sm">
+                    <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm">
                       {bill.invoice}
                     </button>
                   </td>
@@ -251,13 +251,13 @@ const Billing: React.FC = () => {
       {/* Upgrade Modal */}
       {showUpgradeModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-slate-200">
+          <div className="bg-white dark:bg-slate-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-slate-200 dark:border-slate-700">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold text-slate-900">Choose Your Plan</h2>
+                <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Choose Your Plan</h2>
                 <button
                   onClick={() => setShowUpgradeModal(false)}
-                  className="text-slate-400 hover:text-slate-600"
+                  className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
                 >
                   ×
                 </button>
@@ -271,8 +271,8 @@ const Billing: React.FC = () => {
                     key={plan.id}
                     className={`border rounded-xl p-6 relative ${
                       plan.popular 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 bg-white'
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' 
+                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800'
                     }`}
                   >
                     {plan.popular && (
@@ -284,19 +284,19 @@ const Billing: React.FC = () => {
                     )}
                     
                     <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold text-slate-900 mb-2">{plan.name}</h3>
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{plan.name}</h3>
                       <div className="mb-4">
-                        <span className="text-3xl font-bold text-slate-900">${plan.price}</span>
-                        <span className="text-slate-600">/{plan.interval}</span>
+                        <span className="text-3xl font-bold text-slate-900 dark:text-white">${plan.price}</span>
+                        <span className="text-slate-600 dark:text-slate-400">/{plan.interval}</span>
                       </div>
-                      <p className="text-slate-600 text-sm">{plan.description}</p>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">{plan.description}</p>
                     </div>
 
                     <ul className="space-y-3 mb-6">
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-center space-x-3">
                           <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="text-sm text-slate-700">{feature}</span>
+                          <span className="text-sm text-slate-700 dark:text-slate-300">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -306,10 +306,10 @@ const Billing: React.FC = () => {
                       disabled={loading || plan.id === currentPlan}
                       className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
                         plan.id === currentPlan
-                          ? 'bg-slate-100 text-slate-500 cursor-not-allowed'
+                          ? 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 cursor-not-allowed'
                           : plan.popular
                           ? 'bg-blue-600 text-white hover:bg-blue-700'
-                          : 'bg-slate-900 text-white hover:bg-slate-800'
+                          : 'bg-slate-900 dark:bg-slate-700 text-white hover:bg-slate-800 dark:hover:bg-slate-600'
                       }`}
                     >
                       {plan.id === currentPlan ? 'Current Plan' : `Upgrade to ${plan.name}`}

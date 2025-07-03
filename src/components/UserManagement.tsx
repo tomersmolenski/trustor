@@ -96,28 +96,28 @@ const UserManagement: React.FC = () => {
 
   const getRoleIcon = (role: string) => {
     switch (role) {
-      case 'admin': return <Crown className="h-4 w-4 text-purple-600" />;
-      case 'manager': return <Shield className="h-4 w-4 text-blue-600" />;
-      case 'auditor': return <UserCheck className="h-4 w-4 text-green-600" />;
-      default: return <Eye className="h-4 w-4 text-slate-600" />;
+      case 'admin': return <Crown className="h-4 w-4 text-purple-600 dark:text-purple-400" />;
+      case 'manager': return <Shield className="h-4 w-4 text-blue-600 dark:text-blue-400" />;
+      case 'auditor': return <UserCheck className="h-4 w-4 text-green-600 dark:text-green-400" />;
+      default: return <Eye className="h-4 w-4 text-slate-600 dark:text-slate-400" />;
     }
   };
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'manager': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'auditor': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-slate-100 text-slate-800 border-slate-200';
+      case 'admin': return 'bg-purple-100 dark:bg-purple-900/20 text-purple-800 dark:text-purple-300 border-purple-200 dark:border-purple-800';
+      case 'manager': return 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-800';
+      case 'auditor': return 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border-green-200 dark:border-green-800';
+      default: return 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-600';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-emerald-100 text-emerald-800 border-emerald-200';
-      case 'trial': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'inactive': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-slate-100 text-slate-800 border-slate-200';
+      case 'active': return 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800';
+      case 'trial': return 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800';
+      case 'inactive': return 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border-red-200 dark:border-red-800';
+      default: return 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-600';
     }
   };
 
@@ -137,22 +137,22 @@ const UserManagement: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="p-8 flex items-center justify-center">
+      <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-slate-600">Loading users...</p>
+          <p className="text-slate-600 dark:text-slate-400">Loading users...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+    <div className="p-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">User Management</h1>
-            <p className="text-slate-600">Manage team members and their access permissions</p>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">User Management</h1>
+            <p className="text-slate-600 dark:text-slate-400">Manage team members and their access permissions</p>
           </div>
           <button
             onClick={() => setShowInviteModal(true)}
@@ -166,66 +166,66 @@ const UserManagement: React.FC = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-blue-50 p-3 rounded-xl">
-              <Users className="h-6 w-6 text-blue-600" />
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-xl">
+              <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{userStats.total}</h3>
-          <p className="text-slate-600 text-sm">Total Users</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{userStats.total}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Total Users</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-emerald-50 p-3 rounded-xl">
-              <UserCheck className="h-6 w-6 text-emerald-600" />
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-xl">
+              <UserCheck className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{userStats.active}</h3>
-          <p className="text-slate-600 text-sm">Active Users</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{userStats.active}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Active Users</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-yellow-50 p-3 rounded-xl">
-              <UserX className="h-6 w-6 text-yellow-600" />
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-xl">
+              <UserX className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{userStats.trial}</h3>
-          <p className="text-slate-600 text-sm">Trial Users</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{userStats.trial}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Trial Users</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="bg-purple-50 p-3 rounded-xl">
-              <Crown className="h-6 w-6 text-purple-600" />
+            <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-xl">
+              <Crown className="h-6 w-6 text-purple-600 dark:text-purple-400" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-1">{userStats.admins}</h3>
-          <p className="text-slate-600 text-sm">Administrators</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{userStats.admins}</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm">Administrators</p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-6 border border-slate-200 mb-6">
+      <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <Search className="h-5 w-5 text-slate-400 absolute left-3 top-3" />
+              <Search className="h-5 w-5 text-slate-400 dark:text-slate-500 absolute left-3 top-3" />
               <input
                 type="text"
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
+                className="pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
               />
             </div>
             
             <select
               value={selectedRole}
               onChange={(e) => setSelectedRole(e.target.value)}
-              className="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
             >
               <option value="all">All Roles</option>
               <option value="admin">Admin</option>
@@ -236,7 +236,7 @@ const UserManagement: React.FC = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <button className="bg-slate-100 text-slate-700 px-3 py-2 rounded-lg hover:bg-slate-200 transition-colors text-sm flex items-center space-x-1">
+            <button className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-sm flex items-center space-x-1">
               <Filter className="h-4 w-4" />
               <span>More Filters</span>
             </button>
@@ -245,21 +245,21 @@ const UserManagement: React.FC = () => {
       </div>
 
       {/* Users Table */}
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
+            <thead className="bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
               <tr>
-                <th className="text-left py-4 px-6 font-medium text-slate-900">User</th>
-                <th className="text-left py-4 px-6 font-medium text-slate-900">Role</th>
-                <th className="text-left py-4 px-6 font-medium text-slate-900">Status</th>
-                <th className="text-left py-4 px-6 font-medium text-slate-900">Last Active</th>
-                <th className="text-left py-4 px-6 font-medium text-slate-900">Actions</th>
+                <th className="text-left py-4 px-6 font-medium text-slate-900 dark:text-white">User</th>
+                <th className="text-left py-4 px-6 font-medium text-slate-900 dark:text-white">Role</th>
+                <th className="text-left py-4 px-6 font-medium text-slate-900 dark:text-white">Status</th>
+                <th className="text-left py-4 px-6 font-medium text-slate-900 dark:text-white">Last Active</th>
+                <th className="text-left py-4 px-6 font-medium text-slate-900 dark:text-white">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
               {filteredUsers.map((user) => (
-                <tr key={user.id} className="hover:bg-slate-50 transition-colors">
+                <tr key={user.id} className="hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
@@ -268,8 +268,8 @@ const UserManagement: React.FC = () => {
                         </span>
                       </div>
                       <div>
-                        <p className="font-medium text-slate-900">{user.full_name || 'Unnamed User'}</p>
-                        <p className="text-sm text-slate-600">{user.email}</p>
+                        <p className="font-medium text-slate-900 dark:text-white">{user.full_name || 'Unnamed User'}</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">{user.email}</p>
                       </div>
                     </div>
                   </td>
@@ -287,7 +287,7 @@ const UserManagement: React.FC = () => {
                     </span>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
                       {new Date(user.updated_at).toLocaleDateString()}
                     </span>
                   </td>
@@ -298,14 +298,14 @@ const UserManagement: React.FC = () => {
                           <select
                             value={user.role}
                             onChange={(e) => updateUserRole(user.id, e.target.value)}
-                            className="text-xs border border-slate-300 rounded px-2 py-1"
+                            className="text-xs border border-slate-300 dark:border-slate-600 rounded px-2 py-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                           >
                             <option value="admin">Admin</option>
                             <option value="manager">Manager</option>
                             <option value="auditor">Auditor</option>
                             <option value="viewer">Viewer</option>
                           </select>
-                          <button className="p-1 text-slate-400 hover:text-slate-600 transition-colors">
+                          <button className="p-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                             <MoreVertical className="h-4 w-4" />
                           </button>
                         </>
@@ -322,21 +322,21 @@ const UserManagement: React.FC = () => {
       {/* Invite User Modal */}
       {showInviteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
-            <h2 className="text-xl font-semibold text-slate-900 mb-4">Invite New User</h2>
+          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 w-full max-w-md mx-4">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Invite New User</h2>
             
             <form onSubmit={handleInviteUser} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="h-5 w-5 text-slate-400 absolute left-3 top-3" />
+                  <Mail className="h-5 w-5 text-slate-400 dark:text-slate-500 absolute left-3 top-3" />
                   <input
                     type="email"
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                     placeholder="user@company.com"
                     required
                   />
@@ -344,13 +344,13 @@ const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                   Role
                 </label>
                 <select
                   value={inviteRole}
                   onChange={(e) => setInviteRole(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                 >
                   <option value="viewer">Viewer</option>
                   <option value="auditor">Auditor</option>
@@ -363,7 +363,7 @@ const UserManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowInviteModal(false)}
-                  className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors"
+                  className="flex-1 px-4 py-2 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
                 >
                   Cancel
                 </button>

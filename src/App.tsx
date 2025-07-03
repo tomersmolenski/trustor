@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import LoginForm from './components/Auth/LoginForm';
 import SignUpForm from './components/Auth/SignUpForm';
 import Sidebar from './components/Sidebar';
@@ -21,10 +22,10 @@ const AppContent: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-slate-600">Loading...</p>
+          <p className="text-slate-600 dark:text-slate-400">Loading...</p>
         </div>
       </div>
     );
@@ -66,7 +67,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-slate-50 dark:bg-slate-900">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="flex-1 overflow-hidden">
         <main className="h-full overflow-y-auto">
@@ -79,9 +80,11 @@ const AppContent: React.FC = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

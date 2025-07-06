@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ClientProvider } from './contexts/ClientContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import LoginForm from './components/Auth/LoginForm';
 import SignUpForm from './components/Auth/SignUpForm';
@@ -15,7 +14,6 @@ import AutomatedMonitoring from './components/AutomatedMonitoring';
 import EvidenceCollection from './components/EvidenceCollection';
 import UserManagement from './components/UserManagement';
 import Billing from './components/Billing';
-import ClientManagement from './components/ClientManagement';
 
 const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -59,8 +57,6 @@ const AppContent: React.FC = () => {
         return <AuditReminders />;
       case 'users':
         return <UserManagement />;
-      case 'clients':
-        return <ClientManagement />;
       case 'billing':
         return <Billing />;
       case 'settings':
@@ -86,9 +82,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <ClientProvider>
-          <AppContent />
-        </ClientProvider>
+        <AppContent />
       </AuthProvider>
     </ThemeProvider>
   );

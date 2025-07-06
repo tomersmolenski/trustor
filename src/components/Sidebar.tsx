@@ -11,11 +11,14 @@ import {
   Database,
   CheckCircle2,
   Users,
+  Building,
   CreditCard,
   LogOut
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useClient } from '../contexts/ClientContext';
 import ThemeToggle from './ThemeToggle';
+import ClientSwitcher from './ClientSwitcher';
 
 interface SidebarProps {
   activeTab: string;
@@ -24,6 +27,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   const { profile, signOut } = useAuth();
+  const { currentClient } = useClient();
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -34,6 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
     { id: 'reports', label: 'Reports & Analytics', icon: BarChart3 },
     { id: 'audits', label: 'Audit Management', icon: Calendar },
     { id: 'users', label: 'User Management', icon: Users },
+    { id: 'clients', label: 'Client Management', icon: Building },
     { id: 'billing', label: 'Billing & Plans', icon: CreditCard },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
@@ -61,6 +66,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
           </div>
           <ThemeToggle />
         </div>
+        
+        {/* Client Switcher */}
+        <ClientSwitcher />
       </div>
       
       <nav className="flex-1 py-4">
@@ -68,7 +76,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3">
             <div className="flex items-center space-x-2 mb-2">
               <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
-              <span className="text-sm font-medium text-green-800 dark:text-green-300">Compliance Score</span>
+              <span className="text-sm font-medium text-green-800 dark:text-green-300">
+                {currentClient?.name || 'Overall'} Compliance
+              </span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="flex-1 bg-green-200 dark:bg-green-800 rounded-full h-2">
